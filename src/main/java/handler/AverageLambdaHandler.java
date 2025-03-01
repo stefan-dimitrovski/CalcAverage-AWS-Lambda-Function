@@ -9,7 +9,7 @@ public class AverageLambdaHandler implements RequestHandler<AverageLambdaHandler
 
     public String handleRequest(InputObject inputObject, Context context) {
 
-        double result = inputObject.getNumbers().stream().mapToDouble(value -> value).average().getAsDouble();
+        double result = inputObject.getNumbers().stream().mapToDouble(value -> value).average().orElse(0);
 
         return String.format("%.2f", result);
     }
